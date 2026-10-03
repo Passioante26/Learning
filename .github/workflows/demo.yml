@@ -1,0 +1,17 @@
+name: Windows User First Action
+
+# Tells GitHub to run this script every time you make a change (push)
+on: [push]
+
+jobs:
+  my-first-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Tell the machine to download your repository files
+      - name: Get my code
+        uses: actions/checkout@v4
+
+      # Step 2: Run a basic command to say hello
+      - name: Say Welcome
+        run: echo "Hello from Windows! Your first GitHub Action executed successfully."
