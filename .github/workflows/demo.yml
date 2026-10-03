@@ -1,17 +1,19 @@
-name: Windows User First Action
+name: Run My Python Script
 
-# Tells GitHub to run this script every time you make a change (push)
 on: [push]
 
 jobs:
-  my-first-automation:
+  python-test-job:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Tell the machine to download your repository files
       - name: Get my code
         uses: actions/checkout@v4
 
-      # Step 2: Run a basic command to say hello
-      - name: Say Welcome
-        run: echo "Hello from Windows! Your first GitHub Action executed successfully."
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Execute the Python file
+        run: python hello.py
