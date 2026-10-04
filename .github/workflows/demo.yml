@@ -15,5 +15,11 @@ jobs:
         with:
           python-version: '3.10'
 
+      # THIS IS THE UPDATED CLEAN STEP:
       - name: Execute the Python file
-        run: python hello.py
+        env:
+          MY_SECURE_TOKEN: ${{ secrets.PEGA_API_KEY }}
+        run: |
+          echo "Connecting securely to the Pega API..."
+          echo "Using credential token: $MY_SECURE_TOKEN"
+          python hello.py
